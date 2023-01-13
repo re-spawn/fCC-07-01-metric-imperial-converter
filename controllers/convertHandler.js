@@ -8,6 +8,7 @@ function ConvertHandler() {
     lbs: 'kg',
     kg: 'lbs'
   };
+  const decimals = 5;
   
   this.getNum = function(input) {
     let result;
@@ -82,13 +83,14 @@ function ConvertHandler() {
         result = initNum / lbsToKg;
 	break;
     }
+    result = Math.round(result * (10 ** decimals)) / (10 ** decimals);
     return result;
   };
   
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
     let result = initNum + " " + this.spellOutUnit(initUnit) 
       + " converts to " 
-      + returnNum.toFixed(5) + " " + this.spellOutUnit(returnUnit);
+      + returnNum.toFixed(decimals) + " " + this.spellOutUnit(returnUnit);
     return result;
   };
   

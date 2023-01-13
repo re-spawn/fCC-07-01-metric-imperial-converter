@@ -69,23 +69,27 @@ suite('Unit Tests', function() {
   });
 
   suite('convert', function() {
+    const decimals = 5;
+    const round = function(number, decimals) {
+      return Math.round(number * (10 ** decimals)) / (10 ** decimals);
+    };
     test('Convert gal to L', function() {
-      assert.strictEqual(convertHandler.convert(1, 'gal'), 3.78541);
+      assert.strictEqual(convertHandler.convert(1, 'gal'), round(3.78541, decimals));
     });
     test('Convert L to gal', function() {
-      assert.strictEqual(convertHandler.convert(1, 'L'), 1 / 3.78541);
+      assert.strictEqual(convertHandler.convert(1, 'L'), round((1 / 3.78541), decimals));
     });
     test('Convert mi to km', function() {
-      assert.strictEqual(convertHandler.convert(1, 'mi'), 1.60934);
+      assert.strictEqual(convertHandler.convert(1, 'mi'), round(1.60934, decimals));
     });
     test('Convert km to mi', function() {
-      assert.strictEqual(convertHandler.convert(1, 'km'), 1 / 1.60934);
+      assert.strictEqual(convertHandler.convert(1, 'km'), round((1 / 1.60934), decimals));
     });
     test('Convert lbs to kg', function() {
-      assert.strictEqual(convertHandler.convert(1, 'lbs'), 0.453592);
+      assert.strictEqual(convertHandler.convert(1, 'lbs'), round(0.453592, decimals));
     });
     test('Convert kg to lbs', function() {
-      assert.strictEqual(convertHandler.convert(1, 'kg'), 1 / 0.453592);
+      assert.strictEqual(convertHandler.convert(1, 'kg'), round((1 / 0.453592), decimals));
     });
   });
 
