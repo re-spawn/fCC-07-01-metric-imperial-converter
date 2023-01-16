@@ -1,7 +1,14 @@
 const chaiHttp = require('chai-http');
 const chai = require('chai');
 let assert = chai.assert;
-const server = require('../server');
+// const server = require('../server');
+
+require('dotenv').config();
+if (process.env.HOST === 'repl') {
+  var server = 'https://fCC-07-01-metric-imperial-converter.respawn709.repl.co';
+} else {
+  var server = require('../server');
+} 
 
 chai.use(chaiHttp);
 
